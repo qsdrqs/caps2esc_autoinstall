@@ -1,0 +1,6 @@
+[submodule "tools"]
+	path = tools
+	url = https://gitlab.com/interception/linux/tools.git
+[submodule "caps2esc"]
+	path = caps2esc
+	url = https://gitlab.com/interception/linux/plugins/caps2esc.git
