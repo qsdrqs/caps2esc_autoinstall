@@ -6,5 +6,5 @@ May only works for Linux.
 Run : `sudo sh install.sh` to make the installation.
 You can use `-s [DIR]` to point out your customized path of **systemd** services if the default path is not work for you.
 
-##License
+## License
 GPL-3.0
