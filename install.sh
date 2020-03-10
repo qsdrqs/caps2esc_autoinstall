@@ -45,7 +45,7 @@ function move_service {
     sudo systemctl enable --now udevmon
 }
 if move_service ;then
-    echo "Service has been installed and started successfully, use 'systemctl disable --now' to stop the service."
+    echo "Service has been installed and started successfully, use 'systemctl disable --now udevmon' to stop the service."
 elif [ !"$1" ];then
     echo "Systemd services is not in '/usr/lib/systemd/system/', please use -s [service_dir] to assign your customized location"
 else
