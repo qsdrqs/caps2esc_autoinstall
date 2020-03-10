@@ -25,27 +25,28 @@ echo "  1.cmake"
 echo "  2.libevdev"
 echo "  3.yaml-cpp"
 read -p "Have you installed all?(Y/n)" option
-if [ $option == "n" ] || [ $option == "N" ];then
+if [ "$option" == "n" ] || [ "$option" == "N" ];then
     echo "Aborting installation"
     exit
 fi
 #install tools and caps2esc
-cd ./tools && cmake
-cd ./build && make
-make install
-cd ../../
-cd ./caps2esc && cmake
-cd ./build && make
-make install 
-cd ../../
-mv ./udevmon.yaml /etc/udevmon.yaml
+mkdir ./tools/build
+mkdir ./caps2esc/build
+cd ./tools && cmake ./
+make && make install
+cd ../
+cd ./caps2esc && cmake ./
+make && make install 
+cd ../
+cp ./udevmon.yaml /etc/udevmon.yaml
 #May not work if local service files is not set here
 function move_service {
-    mv ./udevmon.service     sudo systemctl enable --now udevmon
+    cp ./udevmon.service $dir
+    sudo systemctl enable --now udevmon
 }
 if move_service ;then
     echo "Service has been installed and started successfully, use 'systemctl disable --now' to stop the service."
-elif [ !$1 ]
+elif [ !"$1" ];then
     echo "Systemd services is not in '/usr/lib/systemd/system/', please use -s [service_dir] to assign your customized location"
 else
     echo "You may not input a correct directory."
