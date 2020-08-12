@@ -21,9 +21,8 @@ else
 fi
 
 echo "Be sure you are under root privilege have installed the following dependences:"
-echo "  1.cmake"
-echo "  2.libevdev"
-echo "  3.yaml-cpp"
+echo "  1.cmake\n  2.libevdev\n  3.yaml-cpp"
+
 read -p "Have you installed all?(Y/n)" option
 if [ "$option" == "n" ] || [ "$option" == "N" ];then
     echo "Aborting installation"
