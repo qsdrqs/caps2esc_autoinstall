@@ -31,12 +31,12 @@ fi
 #install tools and caps2esc
 mkdir ./tools/build
 mkdir ./caps2esc/build
-cd ./tools && cmake ./
+cd ./tools/build && cmake ../
 make && make install
-cd ../
-cd ./caps2esc && cmake ./
+cd ../../
+cd ./caps2esc/build && cmake ../
 make && make install 
-cd ../
+cd ../../
 cp ./udevmon.yaml /etc/udevmon.yaml
 #May not work if local service files is not set here
 function move_service {
