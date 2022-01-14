@@ -1,7 +1,8 @@
-#check root
-if  [ `id -u` != '0' ] ;then
-    echo "Please use root privilege to make sure installation sucessful."
-    exit
+#!/bin/bash
+if [[ -d "./caps2esc/build" || -d "./tools/build" ]];then
+    echo "Build directory exists, removing..."
+    sudo rm -rf ./caps2esc/build
+    sudo rm -rf ./tools/build
 fi
 
 #custom directory
@@ -21,7 +22,9 @@ else
 fi
 
 echo "Be sure you are under root privilege have installed the following dependences:"
-echo "  1.cmake\n  2.libevdev\n  3.yaml-cpp"
+echo "  1.cmake"
+echo "  2.libevdev"
+echo "  3.yaml-cpp"
 
 read -p "Have you installed all?(Y/n)" option
 if [ "$option" == "n" ] || [ "$option" == "N" ];then
@@ -32,15 +35,15 @@ fi
 mkdir ./tools/build
 mkdir ./caps2esc/build
 cd ./tools/build && cmake ../
-make && make install
+make && sudo make install
 cd ../../
 cd ./caps2esc/build && cmake ../
-make && make install 
+make && sudo make install 
 cd ../../
-cp ./udevmon.yaml /etc/udevmon.yaml
+sudo cp ./udevmon.yaml /etc/udevmon.yaml
 #May not work if local service files is not set here
 function move_service {
-    cp ./udevmon.service $dir
+    sudo cp ./udevmon.service $dir
     sudo systemctl enable --now udevmon
 }
 if move_service ;then
