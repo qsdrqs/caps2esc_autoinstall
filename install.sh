@@ -9,7 +9,7 @@ fi
 if [ "$1" != "" ] && [ "$1" != "-s" ];then
     echo "use '-s [service_dir]' to assign a customized systemd directory."
     exit
-elif [ "$1" == "-s" ] && [ !"$2" ];then
+elif [ "$1" == "-s" ] && [ "$2" == "" ];then
     echo "use '-s [service_dir]' to assign a customized systemd directory."
     exit
 elif [ "$1" == "-s" ] && [ "$2" ];then
