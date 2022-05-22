@@ -14,5 +14,7 @@ yaml-cpp
 Use `git clone --recursive https://github.com/qsdrqs/caps2esc_autoinstall.git` to clone and run : `./install.sh` to take the installation.
 You can use `-s [DIR]` to point out your customized path of **systemd** services if the default path is not work for you.
 
-## License
+The default `systemd` path in this project is `/lib/systemd/system`.
+
+:WQ## License
 GPL-3.0
