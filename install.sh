@@ -15,7 +15,7 @@ elif [ "$1" == "-s" ] && [ "$2" == "" ];then
 elif [ "$1" == "-s" ] && [ "$2" ];then
     dir=$2
 elif [ !"$1" ];then
-    dir=/usr/lib/systemd/system/
+    dir=/lib/systemd/system/
 else
     echo "Some errors occured..."
     exit
@@ -49,7 +49,7 @@ function move_service {
 if move_service ;then
     echo "Service has been installed and started successfully, use 'systemctl disable --now udevmon' to stop the service."
 elif [ !"$1" ];then
-    echo "Systemd services is not in '/usr/lib/systemd/system/', please use -s [service_dir] to assign your customized location"
+    echo "Systemd services is not in '/lib/systemd/system/', please use -s [service_dir] to assign your customized location"
 else
     echo "You may not input a correct directory."
 fi
